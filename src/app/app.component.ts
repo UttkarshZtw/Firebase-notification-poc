@@ -41,5 +41,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       console.log('Message received. ', payload);
       this.message=payload;
     });
+    console.log("minor changes");
   }
 }
