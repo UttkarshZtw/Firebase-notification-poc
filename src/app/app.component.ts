@@ -42,5 +42,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.message=payload;
     });
     console.log("minor changes");
+    console.log("more minor changes");
   }
 }
