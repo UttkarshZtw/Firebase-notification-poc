@@ -18,7 +18,7 @@ jobs:
       
       - name: Read release notes
         id: release_notes
-        run: echo "::set-output name=notes::$(cat release-notes.md)"
+        run: echo "::set-output name=notes::$(cat release-note.md)"
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
