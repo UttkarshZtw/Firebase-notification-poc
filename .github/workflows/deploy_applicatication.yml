@@ -1,0 +1,29 @@
+name: Create Release on Tag Push
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get latest tag name
+        id: get_tag
+        run: echo ::set-output name=tag_name::$(git describe --tags --abbrev=0)
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.get_tag.outputs.tag_name }}
+          release_name: Release ${{ steps.get_tag.outputs.tag_name }}
+          body: |
+            Describe your release here
+          draft: false
+          prerelease: false
